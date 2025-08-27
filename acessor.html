@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel da Colegiada</title>
+  <link rel="stylesheet" href="colegiada.css" />
+</head>
+<body>
+
+  <header class="painel-topo" role="banner">
+    <div class="painel-container">
+      <img src="img/mes.png" alt="Logo da Escola" class="logo" />
+      <h1>Painel da Colegiada</h1>
+      <nav aria-label="Menu principal">
+        <ul class="nav-menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="spacer" aria-hidden="true"></div>
+
+  <main class="solicitacoes-section" role="main">
+    <div class="container">
+      <h2>Solicitações de Matrícula</h2>
+
+      <table id="solicitacoesTable" aria-describedby="tableDesc" role="grid">
+        <caption id="tableDesc" class="sr-only">Lista de solicitações de matrícula</caption>
+        <thead>
+          <tr>
+            <th scope="col">Aluno</th>
+            <th scope="col">Responsável</th>
+            <th scope="col">Turma</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dados dinâmicos -->
+        </tbody>
+      </table>
+
+      <a href="index.html" class="btn-sair" role="button" aria-label="Sair do painel">Sair</a>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <p>&copy; 2025 Escola XYZ - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - ConnectMar</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="login.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <img src="img/mes.png" alt="Logo da Escola" class="logo" />
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="matricula.html">ConnectMar</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="login-section">
+    <div class="login-wrapper">
+      <div class="login-image">
+        <img src="img/g_20240719_094855_62.jpg" alt="Imagem de apoio ao login">
+      </div>
+      <div class="login-container">
+        <h2>Área de Login</h2>
+        <form id="loginForm">
+          <label for="usuario">Usuário:</label>
+          <input type="text" id="usuario" placeholder="Digite seu usuário" required />
+
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" placeholder="Digite sua senha" required />
+
+          <label for="tipoUsuario">Tipo de Acesso:</label>
+          <select id="tipoUsuario" required>
+            <option value="">Selecione...</option>
+            <option value="colegiada">Colegiada (Acesso Restrito)</option>
+            <option value="pai">Pai/Mãe</option>
+          </select>
+
+          <div id="codigoContainer" class="hidden">
+            <label for="codigoConfirmacao">Código de Confirmação:</label>
+            <input type="text" id="codigoConfirmacao" placeholder="Informe o código enviado" />
+          </div>
+
+          <button type="submit">Entrar</button>
+        </form>
+        <div id="loginMessage" class="message"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Marista Escola Social Cascavel - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    const tipoUsuario = document.getElementById("tipoUsuario");
+    const codigoContainer = document.getElementById("codigoContainer");
+
+    tipoUsuario.addEventListener("change", function () {
+      codigoContainer.classList.toggle("hidden", this.value !== "colegiada");
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const usuario = document.getElementById("usuario").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+      const tipo = tipoUsuario.value;
+      const codigo = document.getElementById("codigoConfirmacao").value.trim();
+      const mensagem = document.getElementById("loginMessage");
+
+      mensagem.style.color = "red";
+
+      if (!tipo) {
+        mensagem.textContent = "Selecione um tipo de acesso.";
+        return;
+      }
+
+      if (tipo === "colegiada") {
+        if (usuario === "colegiada123" && senha === "senhaSegura") {
+          if (codigo === "abc123") {
+            mensagem.textContent = "Acesso concedido à Colegiada.";
+            mensagem.style.color = "green";
+            setTimeout(() => window.location.href = "acessor.html", 1000);
+          } else {
+            mensagem.textContent = "Código de confirmação inválido.";
+          }
+        } else {
+          mensagem.textContent = "Usuário ou senha inválidos.";
+        }
+      } else if (tipo === "pai") {
+        if (usuario === "pai123" && senha === "senha123") {
+          mensagem.textContent = "Login realizado com sucesso.";
+          mensagem.style.color = "green";
+          setTimeout(() => window.location.href = "painel-pais.html", 1000);
+        } else {
+          mensagem.textContent = "Usuário ou senha incorretos.";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

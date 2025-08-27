@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f5f7fa;
+    color: #333;
+  }
+  
+  .header {
+    background-color: #122e55;
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+  }
+  
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .header .logo {
+    height: 60px;
+  }
+  
+  
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .info-container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .info-container h2 {
+    font-size: 28px;
+    color: #122e55;
+    margin-bottom: 20px;
+  }
+  
+  .info-container p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .school-img {
+    margin-top: 30px;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+    background-color: #eaf0f6;
+  }
+  
+  .detail-box {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  }
+  
+  .detail-box h3 {
+    color: #122e55;
+    margin-bottom: 15px;
+  }
+  
+  .footer {
+    background-color: #122e55;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+  }
+  

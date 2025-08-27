@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Site oficial da Marista Escola Social Cascavel - Educando para o futuro com qualidade e humanização.">
+    <title>ConnectMar - Marista Escola Social Cascavel</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="#" class="logo-container">
+                <img src="img/mes1.png" alt="Logo da Escola Marista" class="logo" width="15%" />
+            </a>
+            <h1>Bem-vindo ao Marista Escola Social Cascavel</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="matricula.html">ConnectMar</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+                <a href="#" class="logo-nav">
+                    <img src="img/mes.png" alt="Logo Marista" class="nav-logo" />
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="container banner-content">
+            <a href="login.html" class="cta-button">Acessar Área de Login</a>
+        </div>
+    </section>
+
+    <div class="carrossel-wrapper">
+        <button class="prev" onclick="moverSlide(-1)">&#10094;</button>
+        <div class="carrossel">
+            <div class="carrossel-container">
+                <div class="carrossel-imagem">
+                    <img src="img/nosso-trabalho-cascavel.jpg" alt="Primeiro Slide">
+                </div>
+                <div class="carrossel-imagem">
+                    <img src="img/5.jpg" alt="Segundo Slide">
+                </div>
+                <div class="carrossel-imagem">
+                    <img src="img/somos-cascavel.jpg" alt="Terceiro Slide">
+                </div>
+            </div>
+        </div>
+        <button class="next" onclick="moverSlide(1)">&#10095;</button>
+    </div>
+
+    <section class="sobre">
+        <div class="container">
+            <h2>Sobre o Marista Escola Social Cascavel</h2>
+            <p>
+                Desde 1998, atendemos gratuitamente cerca de 460 alunos entre 1 e 17 anos em situação de vulnerabilidade
+                social.
+                Oferecemos Educação Infantil, Ensino Fundamental e Ensino Médio Técnico em Informática para
+                Internet.<br><br>
+
+                Nossos alunos recebem não apenas educação e alimentação, mas também suporte psicossocial para garantir
+                um desenvolvimento completo.<br><br>
+
+                Valorizamos o fortalecimento de vínculos, a convivência social, o letramento e a alfabetização — tudo
+                com práticas inovadoras e humanizadas.
+            </p>
+        </div>
+    </section>
+
+    <div class="container botoes-edital">
+    <a href="https://sway.cloud.microsoft/2Hzd5nHeSpVFs40o?ref=email" target="_blank" class="button02">
+         Edital de Rematrícula
+    </a>
+</div>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Marista Escola Social Cascavel - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+
+        function moverSlide(n) {
+            let slides = document.querySelectorAll(".carrossel-imagem");
+            slideIndex += n;
+
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+
+            let newTransformValue = -slideIndex * 100;
+            document.querySelector(".carrossel-container").style.transform = `translateX(${newTransformValue}%)`;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

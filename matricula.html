@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Matrícula</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden { display: none; }
+        .confirmation-message { margin-top: 20px; font-weight: bold; color: green; }
+        .reminder-message { margin-top: 20px; font-weight: bold; color: red; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="img/mes.png" alt="Logo da Escola" class="logo" width="70%">
+            </div>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="formulario">
+        <div class="form-container">
+            <h2>Formulário</h2>
+            <form id="formMatricula">
+                <label for="acao">Selecione a Ação:</label>
+                <select id="acao" required>
+                    <option value="">Selecione...</option>
+                    <option value="matricula">Matrícula</option>
+                    <option value="rematricula">Rematrícula</option>
+                    <option value="projetos">Projetos</option>
+                </select>
+
+                <div id="dadosGerais">
+                    <label for="nomeResponsavel">Nome do Responsável:</label>
+                    <input type="text" id="nomeResponsavel" required>
+
+                    <label for="nomeAluno">Nome do Aluno:</label>
+                    <input type="text" id="nomeAluno" required>
+                </div>
+
+                <div id="turmaContainer" class="hidden">
+                    <label for="turma">Selecione a Turma:</label>
+                    <select id="turma" required>
+                        <option value="1°">1°</option>
+                        <option value="2°">2°</option>
+                        <option value="3°">3°</option>
+                    </select>
+
+                    <div class="form-group">
+                        <label for="vagaStatus">Disponibilidade de vaga:</label>
+                        <span id="vagaStatus" style="font-weight: bold; color: green;">Vaga Disponível!</span>
+                    </div>
+                </div>
+
+                <div id="horarioContainer" class="hidden">
+                    <label for="horario">Escolha o horário para entrega de documentos:</label>
+                    <input type="datetime-local" id="horario" required>
+                </div>
+
+                <div id="inscricaoContainer" class="hidden">
+                    <label for="atividade">Escolha um Projeto:</label>
+                    <select id="atividade">
+                        <option value="">Nenhum</option>
+                        <option value="basquete">Basquete</option>
+                        <option value="pjm">PJM</option>
+                        <option value="idiomas">Idiomas</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="checklist-container" id="documentosContainer" class="hidden">
+                    <h3>Checklist de Documentos</h3>
+                    <label><input type="checkbox"> Cópia do RG do Responsável</label><br>
+                    <input type="file" accept="image/*"><br>
+
+                    <label><input type="checkbox"> Cópia do CPF do Responsável</label><br>
+                    <input type="file" accept="image/*"><br>
+
+                    <label><input type="checkbox"> Comprovante de Endereço</label><br>
+                    <input type="file" accept="image/*"><br>
+
+                    <label><input type="checkbox"> Certidão de Nascimento do Aluno</label><br>
+                    <input type="file" accept="image/*"><br>
+
+                    <label><input type="checkbox"> Foto 3x4 do Aluno</label><br>
+                    <input type="file" accept="image/*"><br>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div id="confirmationMessage" class="hidden confirmation-message">
+                <p>Pré-inscrição realizada com sucesso! Agora, aguarde a confirmação do seu projeto.</p>
+            </div>
+
+            <div id="reminderMessage" class="hidden reminder-message">
+                <p>Lembrete: Não se esqueça de buscar e assinar os papéis necessários para completar a matrícula no projeto.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Marista Escola Social Cascavel - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        const horariosOcupados = [
+            "2025-04-01T09:00",
+            "2025-04-01T10:00",
+            "2025-04-01T11:00"
+        ];
+
+        const acaoSelect = document.getElementById("acao");
+        const turmaContainer = document.getElementById("turmaContainer");
+        const horarioContainer = document.getElementById("horarioContainer");
+        const documentosContainer = document.getElementById("documentosContainer");
+        const inscricaoContainer = document.getElementById("inscricaoContainer");
+        const confirmationMessage = document.getElementById("confirmationMessage");
+        const reminderMessage = document.getElementById("reminderMessage");
+
+        // Inicialmente, tudo estará oculto até que uma ação seja selecionada
+        turmaContainer.classList.add("hidden");
+        horarioContainer.classList.add("hidden");
+        documentosContainer.classList.add("hidden");
+        inscricaoContainer.classList.add("hidden");
+        confirmationMessage.classList.add("hidden");
+        reminderMessage.classList.add("hidden");
+
+        acaoSelect.addEventListener("change", function () {
+            const acao = this.value;
+
+            if (acao === "projetos") {
+                turmaContainer.classList.add("hidden");
+                horarioContainer.classList.add("hidden");
+                documentosContainer.classList.add("hidden");
+                inscricaoContainer.classList.remove("hidden");
+                confirmationMessage.classList.remove("hidden");
+                reminderMessage.classList.remove("hidden");
+            } else if (acao === "matricula" || acao === "rematricula") {
+                turmaContainer.classList.remove("hidden");
+                horarioContainer.classList.remove("hidden");
+                documentosContainer.classList.remove("hidden");
+                inscricaoContainer.classList.add("hidden");
+                confirmationMessage.classList.add("hidden");
+                reminderMessage.classList.add("hidden");
+            } else {
+                turmaContainer.classList.add("hidden");
+                horarioContainer.classList.add("hidden");
+                documentosContainer.classList.add("hidden");
+                inscricaoContainer.classList.add("hidden");
+                confirmationMessage.classList.add("hidden");
+                reminderMessage.classList.add("hidden");
+            }
+        });
+
+        function verificarDisponibilidadeVaga() {
+            const vagaStatus = document.getElementById('vagaStatus');
+            vagaStatus.textContent = "Vaga Disponível!";
+            vagaStatus.style.color = "green";
+        }
+
+        function configurarHorarios() {
+            const horarioInput = document.getElementById('horario');
+            horarioInput.addEventListener('input', function () {
+                const horarioSelecionado = horarioInput.value;
+                if (horariosOcupados.includes(horarioSelecionado)) {
+                    alert("Esse horário já foi ocupado, por favor, escolha outro.");
+                    horarioInput.value = "";
+                } else {
+                    horariosOcupados.push(horarioSelecionado);
+                }
+            });
+        }
+
+        window.onload = function () {
+            verificarDisponibilidadeVaga();
+            configurarHorarios();
+        };
+    </script>
+</body>
+</html>

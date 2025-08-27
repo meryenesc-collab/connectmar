@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  padding-top: 70px; 
+  line-height: 1.5;
+}
+
+.painel-topo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #122e55;
+  color: white;
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.painel-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+.painel-container h1 {
+  font-size: 24px;
+  font-weight: 700;
+  flex-grow: 1;
+  text-align: center;
+  color: #f0f4f8;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+  background-color: #337da8;
+  outline: none;
+}
+
+.solicitacoes-section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.solicitacoes-section h2 {
+  color: #122e55;
+  margin-bottom: 25px;
+  font-size: 28px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  color: #333;
+}
+
+thead th {
+  background-color: #122e55;
+  color: white;
+  padding: 14px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafc;
+}
+
+button, .btn-sair {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #122e55;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+button:hover, button:focus,
+.btn-sair:hover, .btn-sair:focus {
+  background-color: #337da8;
+  outline: none;
+}
+
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #122e55;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .painel-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .painel-container h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  button, .btn-sair {
+    width: 100%;
+  }
+}
